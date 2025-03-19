@@ -1,0 +1,28 @@
+--  create campagin detals table
+
+CREATE TABLE CampaignDetails (
+    camp_id INT(50) PRIMARY KEY,
+    camp_code VARCHAR(50) UNIQUE,
+    camp_name VARCHAR(100) NOT NULL,
+    leads INT DEFAULT 0,
+    camp_start_date DATE,
+    camp_end_date DATE,
+    status ENUM('live', 'pending', 'paused') DEFAULT 'pending'
+);
+
+
+-- To insert a new record into the table:
+
+INSERT INTO CampaignDetails (campaign_code, camp_name, leads, camp_start_date, camp_end_date, status)
+VALUES ('CAMP123', 'Summer Sale', 150, '2024-07-01', '2024-07-31', 'live');
+-- 
+SELECT * FROM CampaignDetails;
+-- To update a campaign's status:
+
+UPDATE CampaignDetails
+SET status = 'paused'
+WHERE campaign_code = 'CAMP123';
+-- To delete a campaign:
+
+DELETE FROM CampaignDetails
+WHERE campaign_code = 'CAMP123';
